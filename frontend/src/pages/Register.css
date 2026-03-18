@@ -1,0 +1,104 @@
+/* PAGE BACKGROUND */
+
+.register-page{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#667eea,#764ba2);
+animation:fadeIn 1s ease;
+}
+
+/* CARD */
+
+.register-card{
+background:rgba(255,255,255,0.9);
+padding:40px;
+border-radius:16px;
+width:380px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+animation:cardPop .6s ease;
+}
+
+.register-card h2{
+text-align:center;
+margin-bottom:20px;
+font-weight:700;
+color:#333;
+}
+
+/* INPUTS */
+
+.input-group{
+margin-bottom:15px;
+}
+
+.input-group input{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+outline:none;
+transition:0.3s;
+}
+
+.input-group input:focus{
+border-color:#667eea;
+box-shadow:0 0 6px rgba(102,126,234,0.5);
+}
+
+.input-group input.error{
+border-color:red;
+}
+
+.input-group small{
+color:red;
+font-size:12px;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:10px;
+border:none;
+border-radius:8px;
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+button:disabled{
+opacity:0.7;
+cursor:not-allowed;
+}
+
+/* ANIMATIONS */
+
+@keyframes cardPop{
+from{
+transform:scale(0.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}

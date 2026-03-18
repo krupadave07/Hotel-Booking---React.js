@@ -1,0 +1,98 @@
+.spa-card {
+  border-radius: 20px;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.spa-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.border-danger {
+  border: 1px solid #ef4444 !important;
+}
+
+.text-danger {
+  font-size: 13px;
+}
+
+/* HERO */
+.spa-hero {
+  height: 300px;
+  background: url("https://wallpaperaccess.com/full/1251812.jpg") center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.spa-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.spa-card:hover {
+  transform: translateY(-5px);
+}
+
+
+
+
+
+
+/* TIME SLOT GRID */
+
+.time-slots{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:15px;
+}
+
+/* SLOT BUTTON */
+
+.slot-btn{
+height:45px;
+font-size:15px;
+font-weight:600;
+border-radius:8px;
+border:2px solid #ddd;
+background:white;
+color:#333;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:all 0.25s ease;
+}
+
+/* HOVER EFFECT */
+
+.slot-btn:hover{
+background:#f1f5ff;
+border-color:#6a5acd;
+transform:scale(1.05);
+}
+
+/* ACTIVE SLOT */
+
+.active-slot{
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+border:none;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}

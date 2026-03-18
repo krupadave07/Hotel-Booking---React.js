@@ -1,0 +1,203 @@
+/*.payment-page{
+background:#eef6ff;
+min-height:100vh;
+}
+
+.payment-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.summary-card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.payment-tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.payment-tabs button{
+flex:1;
+border:none;
+background:#e8f2ff;
+padding:10px;
+border-radius:8px;
+font-weight:600;
+}
+
+.payment-tabs button.active{
+background:#22c55e;
+color:white;
+}
+
+.payment-section{
+margin-top:10px;
+}
+
+.pay-btn{
+background:#22c55e;
+color:white;
+width:100%;
+font-weight:600;
+border:none;
+}
+
+.pay-btn:hover{
+background:#16a34a;
+}
+
+.upi-grid{
+display:flex;
+gap:15px;
+margin-top:10px;
+}
+
+.upi-btn{
+background:white;
+border:1px solid #ddd;
+padding:10px;
+border-radius:8px;
+}
+
+.upi-btn img{
+height:30px;
+}
+
+.wallet-grid{
+display:flex;
+gap:10px;
+}
+
+.wallet-grid button{
+flex:1;
+border:1px solid #ddd;
+padding:10px;
+border-radius:8px;
+background:white;
+}
+
+.total{
+color:#16a34a;
+}
+
+.secure{
+color:#16a34a;
+margin-top:10px;
+}*/
+
+/* PAGE BACKGROUND */
+
+.payment-page{
+min-height:100vh;
+background:linear-gradient(135deg,#667eea,#764ba2);
+padding-top:40px;
+animation:fadePage .7s ease;
+}
+
+
+/* PAYMENT CARD */
+
+.payment-card{
+background:white;
+padding:35px;
+border-radius:16px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+animation:cardPop .6s ease;
+}
+
+
+/* BOOKING SUMMARY */
+
+.summary-card{
+background:white;
+padding:30px;
+border-radius:16px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+animation:cardPop .8s ease;
+}
+
+
+/* PAYMENT OPTIONS */
+
+.payment-option{
+border:2px solid #e5e7eb;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+cursor:pointer;
+font-weight:500;
+transition:.3s;
+}
+
+.payment-option:hover{
+transform:scale(1.03);
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.payment-option.active{
+border-color:#22c55e;
+background:#ecfdf5;
+}
+
+
+/* PAY BUTTON */
+
+.pay-btn{
+background:linear-gradient(135deg,#22c55e,#16a34a);
+color:white;
+border:none;
+padding:12px;
+border-radius:30px;
+font-weight:600;
+font-size:16px;
+transition:.3s;
+width:100%;
+}
+
+.pay-btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+/* SUMMARY TEXT */
+
+.total{
+color:#16a34a;
+font-weight:700;
+}
+
+.secure{
+color:#16a34a;
+font-weight:500;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes fadePage{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes cardPop{
+from{
+transform:scale(.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
