@@ -3,7 +3,8 @@ import db from "../database/connection.js";
 
 const router = express.Router();
 
-/* ===== GET ALL CONTACT ===== */
+/* ================= GET ALL CONTACT ================= */
+
 router.get("/contact", async (req, res) => {
   try {
     const [rows] = await db.execute(
@@ -11,42 +12,52 @@ router.get("/contact", async (req, res) => {
     );
 
     res.json(rows);
+
   } catch (err) {
-    console.error(err);
+    console.error("GET ERROR:", err);
     res.status(500).json([]);
   }
 });
 
-/* ===== UPDATE STATUS ===== */
-router.put("/contact/:id/status", async (req, res) => {
+/* ================= ADD CONTACT (IMPORTANT) ================= */
+
+router.post("/contact", async (req, res) => {
+
   try {
-    const { status } = req.body;
 
-    await db.execute(
-      "UPDATE contact_messages SET status=? WHERE id=?",
-      [status, req.params.id]
-    );
+    const { name, email, subject, message } = req.body;
 
-    res.json({ message: "Updated" });
+    // VALIDATION
+    if (!name || !email || !subject || !message) {
+      return res.json({
+        success: false,
+        message: "All fields required"
+      });
+    }
+
+    const sql = `
+      INSERT INTO contact_messages (name, email, subject, message)
+      VALUES (?, ?, ?, ?)
+    `;
+
+    await db.execute(sql, [name, email, subject, message]);
+
+    res.json({
+      success: true,
+      message: "Message saved"
+    });
+
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
-  }
-});
 
-/* ===== DELETE ===== */
-router.delete("/contact/:id", async (req, res) => {
-  try {
-    await db.execute(
-      "DELETE FROM contact_messages WHERE id=?",
-      [req.params.id]
-    );
+    console.error("POST ERROR:", err);
 
-    res.json({ message: "Deleted" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({
+      success: false,
+      message: "Database error"
+    });
+
   }
+
 });
 
 export default router;

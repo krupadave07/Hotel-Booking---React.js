@@ -1,281 +1,169 @@
-
 import React from "react";
 import "./Home.css";
-
+import { motion } from "framer-motion";
 
 function Home() {
   return (
-    <div>
-      {/* HERO SECTION */}
-      <section className="bg-light py-5">
-        <div className="container">
+    <div className="home-page">
 
-          {/* TOP HEADER ROW */}
-          <div className="row align-items-center mb-4">
-            <div className="col-md-6">
-              <h1 className="fw-bold">
-                Welcome to{" "}
-                <span className="text-primary">Luxury Hotel</span>
-              </h1>
-            </div>
-          </div>
+      {/* HERO */}
+      <div className="home-hero">
+        <div className="home-overlay">
 
-          {/* HERO CONTENT */}
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <p className="text-muted mt-3">
-                Experience unmatched comfort, refined luxury, and world-class
-                hospitality at our hotel. Every detail is thoughtfully designed
-                to make your stay memorable, from beautifully crafted rooms to
-                personalized service. Book your stay with us today and enjoy a
-                truly exceptional getaway.
-              </p>
-              <a href="/rooms" className="btn btn-primary mt-3">
-                View Rooms
-              </a>
-            </div>
+          <motion.h1
+            className="home-title"
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            Welcome to Taj Luxury Experience
+          </motion.h1>
 
-            <div className="col-md-6 text-center">
-              <img
-                src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
-                alt="Hotel"
-                className="img-fluid rounded shadow hover-img"
-              />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* FEATURES SECTION */}
-      <section className="py-5 bg-light">
-        <div className="container text-center">
-          <h2 className="mb-4 fw-semibold">Why Choose Us?</h2>
-          <div className="row">
-
-            {/* Luxury Rooms */}
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100">
-                <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-                  className="card-img-top hover-img"
-                  alt="Luxury Rooms"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Luxury Rooms</h5>
-                  <p className="card-text text-muted">
-                    Spacious rooms with premium interiors and comfort.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Fine Dining */}
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100">
-                <img
-                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
-                  className="card-img-top hover-img"
-                  alt="Fine Dining"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Fine Dining</h5>
-                  <p className="card-text text-muted">
-                    Delicious food prepared by top-class chefs.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Best Location */}
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100">
-                <img
-                  src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
-                  className="card-img-top hover-img"
-                  alt="Best Location"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Best Location</h5>
-                  <p className="card-text text-muted">
-                    Located in the heart of the city with easy access.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ROOMS PREVIEW */}
-      <section className="bg-light py-5">
-        <div className="container text-center">
-          <h2 className="mb-4 fw-semibold">Our Rooms</h2>
-          <div className="row">
-
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100">
-                <img
-                  src="https://hotelroyalsignature.com/wp-content/uploads/2023/08/deluxe-room-deluxe-queen-with-sofa-bed-1.jpg"
-                  className="card-img-top hover-img"
-                  alt="Deluxe Room"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Deluxe Room</h5>
-                  <p className="card-text text-muted">
-                    Comfortable room with city view.
-                  </p>
-                  <a href="/rooms" className="btn btn-primary">
-                    Book Now
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100">
-                <img
-                  src="https://www.swissgarden.com/beach-resort-kuantan/wp-content/uploads/sites/3/2020/02/Executive-Suite-Bedrm.jpg"
-                  className="card-img-top hover-img"
-                  alt="Luxury Room"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Luxury Room</h5>
-                  <p className="card-text text-muted">
-                    Premium amenities and spacious layout.
-                  </p>
-                  <a href="/rooms" className="btn btn-primary">
-                    Book Now
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100">
-                <img
-                  src="https://www.chicagomag.com/wp-content/uploads/2023/10/C202311-312-Ritziest-Suite-preview.jpg"
-                  className="card-img-top hover-img"
-                  alt="Suite"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Suite</h5>
-                  <p className="card-text text-muted">
-                    Luxury suite with premium facilities.
-                  </p>
-                  <a href="/rooms" className="btn btn-primary">
-                    Book Now
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* SPA & RESTAURANT */}
-      <section className="py-5">
-        <div className="container">
-
-          <div className="row align-items-center mb-5">
-            <div className="col-md-6">
-              <img
-                src="https://wallpaperaccess.com/full/1251812.jpg"
-                alt="Spa"
-                className="img-fluid rounded shadow hover-img"
-              />
-            </div>
-            <div className="col-md-6">
-              <h2>Spa & Wellness</h2>
-              <p className="text-muted">
-                Relax and rejuvenate with our professional spa services,
-                massages, and wellness treatments.
-              </p>
-              <a href="/spa" className="btn btn-warning mt-3">
-                Explore Spa
-              </a>
-            </div>
-          </div>
-
-          <div className="row align-items-center">
-            <div className="col-md-6 order-md-2">
-              <img
-                src="https://assets.architecturaldigest.in/photos/6255e22894a997637a908b66/16:9/w_2560%2Cc_limit/Bharat%2520Bhavan%2520feature.jpg"
-                alt="Restaurant"
-                className="img-fluid rounded shadow hover-img"
-              />
-            </div>
-            <div className="col-md-6 order-md-1">
-              <h2>Restaurant</h2>
-              <p className="text-muted">
-                Indulge in gourmet dishes prepared by our top chefs.
-              </p>
-              <a href="/restaurant" className="btn btn-success mt-3">
-                Explore Restaurant
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="bg-light py-5">
-        <div className="container text-center">
-          <h2 className="mb-4 fw-semibold">What Our Guests Say</h2>
-          <div className="row">
-
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100 p-3 testimonial-card">
-                <p className="text-muted">
-                  "Amazing stay! The rooms were luxurious and the
-                  service was exceptional."
-                </p>
-                <h6 className="mt-3">- Krupa Dave</h6>
-              </div>
-            </div>
-
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100 p-3 testimonial-card">
-                <p className="text-muted">
-                  "The spa and restaurant made our weekend unforgettable."
-                </p>
-                <h6 className="mt-3">- Snehal Suryavanshi</h6>
-              </div>
-            </div>
-
-            <div className="col-md-4 mb-3">
-              <div className="card shadow h-100 p-3 testimonial-card">
-                <p className="text-muted">
-                  "Perfect location and friendly and good staff.Deep cleansing and hydration to rejuvenate your skin."
-                </p>
-                <h6 className="mt-3">- Bijal Shah</h6>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT CTA */}
-      <section className="py-5 text-center">
-        <div className="container">
-          <h2>Ready to Book Your Stay?</h2>
-          <p className="text-muted mb-3">
-            Contact us today or book online to secure your room!
+          <p className="home-subtitle">
+            Where elegance meets comfort and every stay becomes unforgettable ✨
           </p>
-          <a href="/contact" className="btn btn-info btn-lg">
-            Contact Us
+
+          <a href="/rooms" className="home-btn">
+            Explore Rooms
           </a>
+
         </div>
-      </section>
+      </div>
+
+      {/* FEATURES */}
+      <div className="container py-5 text-center">
+        <h2 className="section-title">Why Choose Us?</h2>
+
+        <div className="row mt-4">
+
+          {[
+            { title: "Luxury Rooms", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c" },
+            { title: "Fine Dining", img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5" },
+            { title: "Best Location", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" }
+          ].map((item, i) => (
+            <motion.div
+              className="col-md-4 mb-4"
+              key={i}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="home-card">
+                <img src={item.img} alt="" />
+                <h5>{item.title}</h5>
+              </div>
+            </motion.div>
+          ))}
+
+        </div>
+      </div>
+
+      {/* 🧘 SPA SECTION */}
+      <div className="container py-5">
+        <div className="row align-items-center">
+
+          <div className="col-md-6">
+            <img
+              src="https://th.bing.com/th/id/R.9be9d837fa38d578dbed4f6f7b9dfeea?rik=Loa7UUw6KAgpmg&riu=http%3a%2f%2fwww.hotelkralj.rs%2fwp-content%2fuploads%2f2016%2f10%2fspa-wellness-kamenje.png&ehk=nbI%2fk9Vgobd%2bd%2f2OEAcsL9noDFqg3xwZqJiQ26IHfRA%3d&risl=&pid=ImgRaw&r=0"
+              className="img-fluid rounded home-img"
+            />
+          </div>
+
+          <div className="col-md-6">
+            <h2>Relax & Rejuvenate</h2>
+            <p className="home-text">
+              Escape into a world of calm and serenity. Our luxury spa treatments
+              are designed to refresh your mind, relax your body, and awaken your
+              senses 💆‍♀️✨
+            </p>
+            <a href="/spa" className="home-btn">Explore Spa</a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 🍽 RESTAURANT */}
+      <div className="container py-5">
+        <div className="row align-items-center">
+
+          <div className="col-md-6 order-md-2">
+            <img
+              src="https://images.unsplash.com/photo-1552566626-52f8b828add9"
+              className="img-fluid rounded home-img"
+            />
+          </div>
+
+          <div className="col-md-6 order-md-1">
+            <h2>Fine Dining Experience </h2>
+            <p className="home-text">
+              Taste the art of perfection. From gourmet dishes to exotic flavors,
+              every meal is crafted to deliver a world-class dining experience
+              that delights your soul ❤️
+            </p>
+            <a href="/restaurant" className="home-btn">Explore Restaurant</a>
+          </div>
+
+        </div>
+      </div>
+
+{/* CTA SECTION */}
+<div className="cta-section">
+
+  <div className="cta-overlay">
+
+    <h2 className="cta-title">
+      Ready for Your Dream Stay?
+    </h2>
+
+    <p className="cta-subtitle">
+      Experience luxury, comfort, and unforgettable moments at The Taj Hotel.
+    </p>
+
+    <a href="/contact" className="cta-btn">
+      Contact Us
+    </a>
+
+  </div>
+
+</div>
 
       {/* FOOTER */}
-      <footer className="bg-dark text-white text-center p-4">
-        &copy; 2026 The Taj Hotel. 
+      <footer className="home-footer">
+
+        <div className="container">
+          <div className="row">
+
+            <div className="col-md-4">
+              <h5>Taj Hotel</h5>
+              <p>Luxury, comfort & unforgettable experience ✨</p>
+            </div>
+
+            <div className="col-md-4">
+              <h5>Quick Links</h5>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/rooms">Rooms</a></li>
+                <li><a href="/restaurant">Restaurant</a></li>
+                <li><a href="/spa">Spa</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </div>
+
+            <div className="col-md-4">
+              <h5>Contact</h5>
+              <p>📍 Rajkot, Gujarat</p>
+              <p>📞 +91 98765 43210</p>
+              <p>✉️ TheTaj@gmail.com</p>
+            </div>
+
+          </div>
+        </div>
+
+        <hr />
+
+        <p className="text-center">
+          © 2026 Taj Luxury Hotel
+        </p>
+
       </footer>
+
     </div>
   );
 }

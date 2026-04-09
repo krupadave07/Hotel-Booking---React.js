@@ -1,98 +1,127 @@
-.spa-card {
-  border-radius: 20px;
-  color: #333;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-}
-
-.spa-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.border-danger {
-  border: 1px solid #ef4444 !important;
-}
-
-.text-danger {
-  font-size: 13px;
+/* PAGE */
+.spa-page {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  min-height: 100vh;
 }
 
 /* HERO */
-.spa-hero {
-  height: 300px;
-  background: url("https://wallpaperaccess.com/full/1251812.jpg") center/cover no-repeat;
+.spa-page .hero-img {
+  height: 60vh;
+  background: url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874") center/cover no-repeat;
   position: relative;
 }
 
-.overlay {
-  background: rgba(0,0,0,0.6);
+.spa-page .overlay {
+  background: rgba(0,0,0,0.7);
   height: 100%;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* FIX CLICK ISSUE */
+  pointer-events: none;
+}
+
+/* TEXT */
+.spa-page .hero-title {
+  font-size: 42px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #facc15, #f97316);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.spa-page .hero-subtitle {
+  color: #cbd5f5;
+}
+
+/* CONTENT ABOVE HERO */
+.spa-page .container {
+  position: relative;
+  z-index: 5;
 }
 
 /* CARD */
-.spa-card {
-  background: #fff;
+.spa-page .spa-card {
+  background: rgba(255,255,255,0.08);
   padding: 20px;
   border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: 0.3s;
 }
 
-.spa-card:hover {
-  transform: translateY(-5px);
+.spa-page .spa-card:hover {
+  transform: translateY(-10px);
 }
 
-
-
-
-
-
-/* TIME SLOT GRID */
-
-.time-slots{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-top:15px;
+/* BUTTON */
+.spa-page .book-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+  color: white;
+  cursor: pointer;
 }
 
-/* SLOT BUTTON */
-
-.slot-btn{
-height:45px;
-font-size:15px;
-font-weight:600;
-border-radius:8px;
-border:2px solid #ddd;
-background:white;
-color:#333;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:all 0.25s ease;
+/* MODAL */
+.spa-page .modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* HOVER EFFECT */
-
-.slot-btn:hover{
-background:#f1f5ff;
-border-color:#6a5acd;
-transform:scale(1.05);
+.spa-page .modal-box {
+  background: #1e293b;
+  padding: 20px;
+  width: 320px;
+  border-radius: 10px;
 }
 
-/* ACTIVE SLOT */
+/* SLOT */
+.spa-page .slot-btn {
+  margin: 5px;
+  padding: 6px 10px;
+  border: none;
+}
 
-.active-slot{
-background:linear-gradient(135deg,#667eea,#764ba2);
-color:white;
-border:none;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
+.spa-page .active-slot {
+  background: #22c55e;
+  color: white;
+}
+
+/* ACTIONS */
+.spa-page .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-btn {
+  background: gray;
+  color: white;
+  padding: 6px 10px;
+}
+
+.confirm-btn {
+  background: #22c55e;
+  color: white;
+  padding: 6px 10px;
+}
+
+/* FOOTER */
+.spa-page .footer {
+  background: #1e293b;
+  text-align: center;
+  padding: 15px;
 }

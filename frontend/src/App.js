@@ -9,6 +9,9 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+import Wishlist from "./pages/Wishlist";
+import Reviews from "./pages/Reviews";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
@@ -25,6 +28,10 @@ import AdminUsers from "./pages/AdminUsers";
 import Payment from "./pages/Payment";
 
 import MyBookings from "./pages/MyBookings";
+
+import FoodPayment from "./pages/FoodPayment";
+
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const location = useLocation();
@@ -45,6 +52,14 @@ function App() {
 
         <Route path="/my-bookings" element={<MyBookings />} />
 
+<Route path="/wishlist" element={<Wishlist />} />
+<Route path="/reviews" element={<Reviews />} />
+
+<Route path="/forgot-password" element={<ForgotPassword />} />
+
+        <Route path="/food-payment" element={<FoodPayment />} />
+
+
         {/* ========= USER PROTECTED ========= */}
         <Route
           path="/rooms"
@@ -63,6 +78,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
 
         <Route
           path="/spa"

@@ -201,3 +201,52 @@ transform:scale(1);
 opacity:1;
 }
 }
+
+
+
+
+
+
+/* UPI QR BOX */
+.upi-box {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+/* QR IMAGE */
+.qr-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* PAYMENT OPTION */
+.payment-option {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.payment-option:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.payment-option.active {
+  border: 2px solid #4ade80;
+}
+
+/* BUTTON */
+.pay-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #16a34a, #22c55e);
+  color: white;
+}

@@ -1,754 +1,251 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Rooms.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
+
+
+const rooms = [
+  {
+    id: 1,
+    name: "Deluxe Room",
+    price: 3000,
+    rating: 4,
+    offer: "20% OFF",
+    img: "https://images.unsplash.com/photo-1566073771259-6a8506099945"
+  },
+  {
+    id: 2,
+    name: "Luxury Room",
+    price: 6000,
+    rating: 5,
+    offer: "15% OFF",
+    img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"
+  },
+  {
+    id: 3,
+    name: "Suite",
+    price: 9000,
+    rating: 5,
+    offer: "10% OFF",
+    img: "https://images.unsplash.com/photo-1590490360182-c33d57733427"
+  },
+
+  /* NEW 9 ROOMS 👇 */
+
+  {
+    id: 4,
+    name: "Executive Room",
+    price: 7000,
+    rating: 4,
+    offer: "25% OFF",
+    img: "https://images.unsplash.com/photo-1611892440504-42a792e24d32"
+  },
+  {
+    id: 5,
+    name: "Family Room",
+    price: 5000,
+    rating: 4,
+    offer: "18% OFF",
+    img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"
+  },
+  {
+    id: 6,
+    name: "Presidential Suite",
+    price: 15000,
+    rating: 5,
+    offer: "30% OFF",
+    img: "https://images.unsplash.com/photo-1600585152915-d208bec867a1"
+  },
+  {
+    id: 7,
+    name: "Single Room",
+    price: 2000,
+    rating: 3,
+    offer: "10% OFF",
+    img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
+  },
+  {
+    id: 8,
+    name: "Double Room",
+    price: 3500,
+    rating: 4,
+    offer: "12% OFF",
+    img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf"
+  },
+  {
+    id: 9,
+    name: "Premium Room",
+    price: 8000,
+    rating: 5,
+    offer: "22% OFF",
+    img: "https://images.unsplash.com/photo-1591088398332-8a7791972843"
+  },
+  {
+    id: 10,
+    name: "Sea View Room",
+    price: 9500,
+    rating: 5,
+    offer: "20% OFF",
+    img: "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+  },
+  {
+    id: 11,
+    name: "Garden View Room",
+    price: 4000,
+    rating: 4,
+    offer: "15% OFF",
+    img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461"
+  },
+  {
+    id: 12,
+    name: "Budget Room",
+    price: 1500,
+    rating: 3,
+    offer: "5% OFF",
+    img: "https://images.unsplash.com/photo-1551776235-dde6d4829808"
+  }
+];
 
 function Rooms() {
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedRoom, setSelectedRoom] = useState(null);
-  const [wishlist, setWishlist] = useState([]);
-  const [ratings, setRatings] = useState({});
-
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-
-  const [customerName, setCustomerName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const [dateError, setDateError] = useState({});
-
   const navigate = useNavigate();
+  const [wishlist, setWishlist] = useState([]);
 
-  /* ================= ROOMS ================= */
-
-  const rooms = [
-    {
-      id: 1,
-      type: "Deluxe Room",
-      price: 4000,
-      image:
-        "https://hotelroyalsignature.com/wp-content/uploads/2023/08/deluxe-room-deluxe-queen-with-sofa-bed-1.jpg"
-    },
-    {
-      id: 2,
-      type: "Luxury Room",
-      price: 6000,
-      image:
-        "https://www.swissgarden.com/beach-resort-kuantan/wp-content/uploads/sites/3/2020/02/Executive-Suite-Bedrm.jpg"
-    },
-    {
-      id: 3,
-      type: "Suite",
-      price: 8000,
-      image:
-        "https://www.chicagomag.com/wp-content/uploads/2023/10/C202311-312-Ritziest-Suite-preview.jpg"
-    },
-    {
-      id: 4,
-      type: "Presidential Suite",
-      price: 15000,
-      image:
-        "https://assets.sandsresortsmacao.cn/content/venetianmacao/hotel/suite/2020/presidential-suite/vm_presidential-suite_gallery_1500x1020_1.jpg"
-    },
-    {
-      id: 5,
-      type: "Executive Room",
-      price: 5000,
-      image:
-        "https://images.unsplash.com/photo-1591088398332-8a7791972843"
-    },
-    {
-      id: 6,
-      type: "Family Room",
-      price: 7000,
-      image:
-        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461"
-    },
-    {
-      id: 7,
-      type: "Premium Suite",
-      price: 9000,
-      image:
-        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
-    },
-    {
-      id: 8,
-      type: "Honeymoon Suite",
-      price: 10000,
-      image:
-        "https://images.unsplash.com/photo-1590490360182-c33d57733427"
-    },
-    {
-      id: 9,
-      type: "Single Room",
-      price: 2500,
-      image:
-        "https://www.hotel-dubrovnik.hr/wp-content/uploads/2018/12/Hotel-Dubrovnik-Zagreb-standard-single-room1-min.jpg"
-    },
-    {
-      id: 10,
-      type: "Double Room",
-      price: 3500,
-      image:
-        "https://images.unsplash.com/photo-1598928506311-c55ded91a20c"
-    }
-  ];
-
-  /* ================= RATINGS ================= */
-
+  /* ================= LOAD WISHLIST ================= */
   useEffect(() => {
-
-    const fetchRatings = async () => {
-
-      try {
-
-        const res = await fetch("http://localhost:5000/api/ratings");
-        const data = await res.json();
-
-        const map = {};
-
-        data.forEach((r) => {
-          map[r.room_id] = r.rating;
-        });
-
-        setRatings(map);
-
-      } catch {
-
-        console.log("ratings api error");
-
-      }
-
-    };
-
-    fetchRatings();
-
+    const saved = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(saved);
   }, []);
 
-  /* ================= BOOKING ================= */
-
-  const handleConfirmBooking = () => {
-
-    let errors = {};
-
-    if (!customerName.trim()) errors.name = "Full name required";
-    if (!email.trim()) errors.email = "Email required";
-    if (!phone.trim()) errors.phone = "Phone required";
-    if (!checkIn) errors.checkIn = "Check-in required";
-    if (!checkOut) errors.checkOut = "Check-out required";
-
-    setDateError(errors);
-
-    if (Object.keys(errors).length > 0) return;
+  /* ================= ADD TO WISHLIST ================= */
+  const addWishlist = (room) => {
+    const updated = [...wishlist, room];
+    setWishlist(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
 
     Swal.fire({
-      title: "Booking Confirmed 🎉",
-      text: "Your room has been booked successfully!",
       icon: "success",
-      confirmButtonText: "Continue"
+      title: "Added to Wishlist ❤️",
+      text: room.name,
+      timer: 1500,
+      showConfirmButton: false
+    });
+  };
+
+  /* ================= BOOK ROOM ================= */
+  const bookRoom = (room) => {
+    Swal.fire({
+      title: "Booking Successful 🎉",
+      text: `${room.name} booked successfully!`,
+      icon: "success",
+      confirmButtonColor: "#6366f1"
     }).then(() => {
-
-      setShowModal(false);
-
       navigate("/payment", {
         state: {
           booking: {
-            room: selectedRoom.type,
-            price: selectedRoom.price,
-            checkIn,
-            checkOut
+            room: room.name,
+            price: room.price,
+            checkIn: "2026-04-10",
+            checkOut: "2026-04-12"
           }
         }
       });
-
     });
-
-  };
-
-  /* ================= WISHLIST ================= */
-
-  const toggleWishlist = (id) => {
-
-    const isAdded = wishlist.includes(id);
-
-    setWishlist((prev) =>
-      isAdded ? prev.filter((x) => x !== id) : [...prev, id]
-    );
-
-    if (!isAdded) {
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "success",
-        title: "Added to Wishlist ❤️",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }
-
   };
 
   return (
+    <div className="rooms-page">
 
-    <div className="container mt-4">
+      {/* ================= HERO SECTION ================= */}
+      <div className="hero-section">
+        <div className="overlay">
 
-      <h2 className="text-center mb-4 fw-bold">Explore Our Rooms</h2>
+          <motion.h1
+            className="hero-title"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            Experience Royal Comfort at Taj Hotel
+          </motion.h1>
 
-      <div className="row g-4">
-
-        {rooms.map((room) => (
-
-          <div className="col-md-6 col-lg-4" key={room.id}>
-
-            <div className="hotel-card">
-
-              <div className="img-container">
-
-                <img src={room.image} alt="" />
-
-                <button
-                  className={`wishlist-btn ${wishlist.includes(room.id) ? "active" : ""}`}
-                  onClick={() => toggleWishlist(room.id)}
-                >
-                  {wishlist.includes(room.id) ? "❤️" : "🤍"}
-                </button>
-
-                <span className="rating-badge">
-                  ⭐ {ratings[room.id] || 8.5}
-                </span>
-
-              </div>
-
-              <div className="card-body">
-
-                <h5>{room.type}</h5>
-
-                <h4 className="price">₹{room.price}</h4>
-
-                <button
-                  className="view-btn"
-                  onClick={() => {
-                    setSelectedRoom(room);
-                    setShowModal(true);
-                  }}
-                >
-                  View Deal
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        ))}
-
-      </div>
-
-
-      {/* BOOKING MODAL */}
-
-      {showModal && (
-
-        <div className="modal show d-block modal-bg">
-
-          <div className="modal-dialog">
-
-            <div className="modal-content">
-
-              <div className="modal-header">
-
-                <h5>Book {selectedRoom?.type}</h5>
-
-                <button
-                  className="btn-close"
-                  onClick={() => setShowModal(false)}
-                ></button>
-
-              </div>
-
-              <div className="modal-body">
-
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  className="form-control mb-1"
-                  value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                />
-                <small className="text-danger">{dateError.name}</small>
-
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="form-control mb-1"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <small className="text-danger">{dateError.email}</small>
-
-                <input
-                  type="tel"
-                  placeholder="Phone"
-                  className="form-control mb-1"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-                <small className="text-danger">{dateError.phone}</small>
-
-                <input
-                  type="date"
-                  className="form-control mb-1"
-                  value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
-                />
-                <small className="text-danger">{dateError.checkIn}</small>
-
-                <input
-                  type="date"
-                  className="form-control"
-                  value={checkOut}
-                  onChange={(e) => setCheckOut(e.target.value)}
-                />
-                <small className="text-danger">{dateError.checkOut}</small>
-
-              </div>
-
-              <div className="modal-footer">
-
-                <button
-                  className="btn btn-success"
-                  onClick={handleConfirmBooking}
-                >
-                  Confirm Booking
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
+          <motion.p
+            className="hero-subtitle"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+          >
+            Discover a perfect blend of luxury, elegance, and world-class hospitality.
+            Book your dream stay with unforgettable comfort and premium services.
+          </motion.p>
 
         </div>
+      </div>
 
-      )}
+      {/* ================= ROOMS ================= */}
+      <div className="container mt-5">
+        <div className="row">
+
+          {rooms.map((room, index) => (
+            <motion.div
+              className="col-md-4 mb-5"
+              key={room.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+            >
+
+              <div className="room-card">
+
+                {/* IMAGE */}
+                <div className="img-box">
+                  <img src={room.img} alt={room.name} />
+
+                  <span className="price">₹{room.price}</span>
+                  <span className="offer">{room.offer}</span>
+
+                  <span
+                    className="wishlist"
+                    onClick={() => addWishlist(room)}
+                  >
+                    ❤️
+                  </span>
+                </div>
+
+                {/* DETAILS */}
+                <div className="card-body text-center">
+
+                  <h4 className="room-name">{room.name}</h4>
+
+                  <div className="stars">
+                    {"★".repeat(room.rating)}
+                  </div>
+
+                  <button
+                    className="book-btn mt-3"
+                    onClick={() => bookRoom(room)}
+                  >
+                    Book Now
+                  </button>
+
+                </div>
+
+              </div>
+
+            </motion.div>
+          ))}
+
+        </div>
+      </div>
+
+      {/* ================= FOOTER ================= */}
+      <footer className="footer">
+        © 2026 Taj Hotel | Luxury Experience ✨
+      </footer>
 
     </div>
-
   );
-
 }
 
 export default Rooms;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState, useEffect } from "react";
-// import "./Rooms.css";
-// import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
-// import "animate.css";
-
-// function Rooms() {
-
-//   const [showModal, setShowModal] = useState(false);
-//   const [selectedRoom, setSelectedRoom] = useState(null);
-//   const [wishlist, setWishlist] = useState([]);
-//   const [ratings, setRatings] = useState({});
-
-//   const [checkIn, setCheckIn] = useState("");
-//   const [checkOut, setCheckOut] = useState("");
-
-//   const [customerName, setCustomerName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [phone, setPhone] = useState("");
-
-//   const [dateError, setDateError] = useState({});
-
-//   const navigate = useNavigate();
-
-//   /* ================= ROOMS ================= */
-
-//   const rooms = [
-//     {
-//       id: 1,
-//       type: "Deluxe Room",
-//       price: 4000,
-//       image:
-//         "https://hotelroyalsignature.com/wp-content/uploads/2023/08/deluxe-room-deluxe-queen-with-sofa-bed-1.jpg"
-//     },
-//     {
-//       id: 2,
-//       type: "Luxury Room",
-//       price: 6000,
-//       image:
-//         "https://www.swissgarden.com/beach-resort-kuantan/wp-content/uploads/sites/3/2020/02/Executive-Suite-Bedrm.jpg"
-//     },
-//     {
-//       id: 3,
-//       type: "Suite",
-//       price: 8000,
-//       image:
-//         "https://www.chicagomag.com/wp-content/uploads/2023/10/C202311-312-Ritziest-Suite-preview.jpg"
-//     },
-//     {
-//       id: 4,
-//       type: "Presidential Suite",
-//       price: 15000,
-//       image:
-//         "https://tse1.mm.bing.net/th/id/OIP._h8906nCoRI44eTrYJ5lqAHaFC?w=1500&h=1020&rs=1&pid=ImgDetMain&o=7&rm=3"
-//     },
-//     {
-//       id: 5,
-//       type: "Executive Room",
-//       price: 5000,
-//       image:
-//         "https://images.unsplash.com/photo-1591088398332-8a7791972843"
-//     },
-//     {
-//       id: 6,
-//       type: "Family Room",
-//       price: 7000,
-//       image:
-//         "https://images.unsplash.com/photo-1578683010236-d716f9a3f461"
-//     },
-//     {
-//       id: 7,
-//       type: "Premium Suite",
-//       price: 9000,
-//       image:
-//         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
-//     },
-//     {
-//       id: 8,
-//       type: "Honeymoon Suite",
-//       price: 10000,
-//       image:
-//         "https://images.unsplash.com/photo-1590490360182-c33d57733427"
-//     },
-//     {
-//       id: 9,
-//       type: "Single Room",
-//       price: 2500,
-//       image:
-//         "https://www.hotel-dubrovnik.hr/wp-content/uploads/2018/12/Hotel-Dubrovnik-Zagreb-standard-single-room1-min.jpg"
-//     },
-//     {
-//       id: 10,
-//       type: "Double Room",
-//       price: 3500,
-//       image:
-//         "https://images.unsplash.com/photo-1598928506311-c55ded91a20c"
-//     },
-//        {
-//       id: 11,
-//       type: "Sea View Room",
-//       price: 3500,
-//       image:
-//         "https://assets.tivolihotels.com/image/upload/q_auto,f_auto,c_limit,w_1045/media/minor/tivoli/images/hotels/tmvi/rooms/premium-sea-view/tivoli_marina_vilamoura_algarve_resort_guest_room_premium_room_sea_view.jpg"
-//     },
-//        {
-//       id: 12,
-//       type: "Garden View Room",
-//       price: 3500,
-//       image:
-//         "https://tse4.mm.bing.net/th/id/OIP.S2Q-SsIXXAZ_4vtC14mA7AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
-//     }
-//   ];
-
-//   /* ================= RATINGS ================= */
-
-//   useEffect(() => {
-
-//     const fetchRatings = async () => {
-
-//       try {
-
-//         const res = await fetch("http://localhost:5000/api/ratings");
-//         const data = await res.json();
-
-//         const map = {};
-
-//         data.forEach((r) => {
-//           map[r.room_id] = r.rating;
-//         });
-
-//         setRatings(map);
-
-//       } catch {
-
-//         console.log("ratings api error");
-
-//       }
-
-//     };
-
-//     fetchRatings();
-
-//   }, []);
-
-//   /* ================= BOOKING ================= */
-
-//   const handleConfirmBooking = () => {
-
-//     let errors = {};
-
-//     if (!customerName.trim()) errors.name = "Full name required";
-//     if (!email.trim()) errors.email = "Email required";
-//     if (!phone.trim()) errors.phone = "Phone required";
-//     if (!checkIn) errors.checkIn = "Check-in required";
-//     if (!checkOut) errors.checkOut = "Check-out required";
-
-//     setDateError(errors);
-
-//     if (Object.keys(errors).length > 0) return;
-
-//     Swal.fire({
-//       title: "🎉 Thank You for Booking!",
-//       html: `
-//       <h4>Your room has been successfully reserved.</h4>
-//       <p>We look forward to hosting you! 🏨</p>
-//       `,
-//       icon: "success",
-//       confirmButtonText: "Proceed to Payment",
-//       confirmButtonColor: "#16a34a",
-//       background: "#ffffff",
-//       showClass: {
-//         popup: "animate__animated animate__zoomIn"
-//       }
-//     }).then(() => {
-
-//       setShowModal(false);
-
-//       navigate("/payment", {
-//         state: {
-//           booking: {
-//             room: selectedRoom.type,
-//             price: selectedRoom.price,
-//             checkIn,
-//             checkOut
-//           }
-//         }
-//       });
-
-//     });
-
-//   };
-
-//   /* ================= WISHLIST ================= */
-
-//   const toggleWishlist = (id) => {
-
-//     const isAdded = wishlist.includes(id);
-
-//     setWishlist((prev) =>
-//       isAdded ? prev.filter((x) => x !== id) : [...prev, id]
-//     );
-
-//     if (!isAdded) {
-
-//       Swal.fire({
-//         toast: true,
-//         position: "top-end",
-//         icon: "success",
-//         title: "Added to Wishlist ❤️",
-//         showConfirmButton: false,
-//         timer: 1500
-//       });
-
-//     }
-
-//   };
-
-//   return (
-
-//     <div className="container mt-4">
-
-//       <h2 className="text-center mb-4 fw-bold">
-//         Explore Our Luxury Rooms
-//       </h2>
-
-//       <div className="row g-4">
-
-//         {rooms.map((room) => (
-
-//           <div className="col-md-6 col-lg-4" key={room.id}>
-
-//             <div className="hotel-card">
-
-//               <div className="img-container">
-
-//                 <img src={room.image} alt="room" />
-
-//                 <button
-//                   className={`wishlist-btn ${
-//                     wishlist.includes(room.id) ? "active" : ""
-//                   }`}
-//                   onClick={() => toggleWishlist(room.id)}
-//                 >
-//                   {wishlist.includes(room.id) ? "❤️" : "🤍"}
-//                 </button>
-
-//                 <span className="rating-badge">
-//                   ⭐ {ratings[room.id] || 8.5}
-//                 </span>
-
-//               </div>
-
-//               <div className="card-body">
-
-//                 <h5>{room.type}</h5>
-
-//                 <h4 className="price">₹{room.price}</h4>
-
-//                 <button
-//                   className="view-btn"
-//                   onClick={() => {
-//                     setSelectedRoom(room);
-//                     setShowModal(true);
-//                   }}
-//                 >
-//                   View Deal
-//                 </button>
-
-//               </div>
-
-//             </div>
-
-//           </div>
-
-//         ))}
-
-//       </div>
-
-
-//       {/* ================= BOOKING MODAL ================= */}
-
-//       {showModal && (
-
-//         <div className="modal show d-block modal-bg">
-
-//           <div className="modal-dialog">
-
-//             <div className="modal-content">
-
-//               <div className="modal-header">
-
-//                 <h5>Book {selectedRoom?.type}</h5>
-
-//                 <button
-//                   className="btn-close"
-//                   onClick={() => setShowModal(false)}
-//                 ></button>
-
-//               </div>
-
-//               <div className="modal-body">
-
-//                 <input
-//                   type="text"
-//                   placeholder="Full Name"
-//                   className="form-control mb-1"
-//                   value={customerName}
-//                   onChange={(e) => setCustomerName(e.target.value)}
-//                 />
-//                 <small className="text-danger">{dateError.name}</small>
-
-//                 <input
-//                   type="email"
-//                   placeholder="Email"
-//                   className="form-control mb-1"
-//                   value={email}
-//                   onChange={(e) => setEmail(e.target.value)}
-//                 />
-//                 <small className="text-danger">{dateError.email}</small>
-
-//                 <input
-//                   type="tel"
-//                   placeholder="Phone"
-//                   className="form-control mb-1"
-//                   value={phone}
-//                   onChange={(e) => setPhone(e.target.value)}
-//                 />
-//                 <small className="text-danger">{dateError.phone}</small>
-
-//                 <input
-//                   type="date"
-//                   className="form-control mb-1"
-//                   value={checkIn}
-//                   onChange={(e) => setCheckIn(e.target.value)}
-//                 />
-//                 <small className="text-danger">{dateError.checkIn}</small>
-
-//                 <input
-//                   type="date"
-//                   className="form-control"
-//                   value={checkOut}
-//                   onChange={(e) => setCheckOut(e.target.value)}
-//                 />
-//                 <small className="text-danger">{dateError.checkOut}</small>
-
-//               </div>
-
-//               <div className="modal-footer">
-
-//                 <button
-//                   className="btn btn-success"
-//                   onClick={handleConfirmBooking}
-//                 >
-//                   Confirm Booking
-//                 </button>
-
-//               </div>
-
-//             </div>
-
-//           </div>
-
-//         </div>
-
-//       )}
-
-//     </div>
-
-//   );
-
-// }
-
-// export default Rooms;
