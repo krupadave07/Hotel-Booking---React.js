@@ -4,72 +4,81 @@
   color: white;
 }
 
-/* HERO */
-.contact-page .hero-img {
+/* HERO (FIXED MAIN ISSUE) */
+.contact-hero {
   height: 60vh;
-  background: url("https://images.unsplash.com/photo-1501117716987-c8e1ecb2107c") center/cover;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945")
+    center/cover no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contact-page .overlay {
-  background: rgba(255,255,255,0.08);
-  height: 100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  pointer-events:none;
+/* OVERLAY TEXT */
+.contact-overlay {
+  text-align: center;
 }
 
 /* TITLE */
-.contact-page .hero-title {
-  font-size: 42px;
+.hero-title {
+  font-size: 45px;
+  font-weight: bold;
+
   background: linear-gradient(45deg,#facc15,#f97316);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.contact-page .hero-subtitle {
-  color:#cbd5f5;
+/* SUBTITLE */
+.hero-subtitle {
+  color: #cbd5f5;
+  margin-top: 10px;
 }
 
 /* CARD */
-.contact-card {
+.contact-card,
+.contact-info {
   background: rgba(255,255,255,0.08);
-  padding:25px;
-  border-radius:15px;
+  padding: 25px;
+  border-radius: 15px;
   backdrop-filter: blur(10px);
 }
 
-/* INFO */
-.contact-info {
-  background: rgba(255,255,255,0.08);
-  padding:25px;
-  border-radius:15px;
-}
-
 /* INPUT */
-.form-control {
-  background:#1e293b;
-  border:none;
-  color:white;
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: white;
 }
 
 /* BUTTON */
 .send-btn {
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:25px;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
   background: linear-gradient(45deg,#6366f1,#8b5cf6);
-  color:white;
+  color: white;
+  transition: 0.3s;
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
 }
 
 /* FOOTER */
 .footer {
-  background:#1e293b;
-  text-align:center;
-  padding:15px;
+  background: #1e293b;
+  text-align: center;
+  padding: 15px;
 }
-
-

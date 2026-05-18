@@ -1,252 +1,492 @@
-/*.payment-page{
-background:#eef6ff;
-min-height:100vh;
+/* ============================================
+   PAYMENT PAGE - PROFESSIONAL UI
+   ============================================ */
+
+* {
+  box-sizing: border-box;
 }
 
-.payment-card{
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
+.payment-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
 }
 
-.summary-card{
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
+.payment-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.payment-tabs{
-display:flex;
-gap:10px;
-margin-bottom:20px;
+/* HEADER */
+.payment-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  animation: slideDown 0.6s ease;
 }
 
-.payment-tabs button{
-flex:1;
-border:none;
-background:#e8f2ff;
-padding:10px;
-border-radius:8px;
-font-weight:600;
+.payment-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.payment-tabs button.active{
-background:#22c55e;
-color:white;
+.payment-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
-.payment-section{
-margin-top:10px;
+/* MAIN CONTENT */
+.payment-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
 }
 
-.pay-btn{
-background:#22c55e;
-color:white;
-width:100%;
-font-weight:600;
-border:none;
+@media (max-width: 1024px) {
+  .payment-content {
+    grid-template-columns: 1fr;
+  }
 }
 
-.pay-btn:hover{
-background:#16a34a;
+/* ============================================
+   PAYMENT CARD
+   ============================================ */
+
+.payment-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: cardSlideIn 0.7s ease;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.upi-grid{
-display:flex;
-gap:15px;
-margin-top:10px;
+.payment-card h3 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
-
-.upi-btn{
-background:white;
-border:1px solid #ddd;
-padding:10px;
-border-radius:8px;
-}
-
-.upi-btn img{
-height:30px;
-}
-
-.wallet-grid{
-display:flex;
-gap:10px;
-}
-
-.wallet-grid button{
-flex:1;
-border:1px solid #ddd;
-padding:10px;
-border-radius:8px;
-background:white;
-}
-
-.total{
-color:#16a34a;
-}
-
-.secure{
-color:#16a34a;
-margin-top:10px;
-}*/
-
-/* PAGE BACKGROUND */
-
-.payment-page{
-min-height:100vh;
-background:linear-gradient(135deg,#667eea,#764ba2);
-padding-top:40px;
-animation:fadePage .7s ease;
-}
-
-
-/* PAYMENT CARD */
-
-.payment-card{
-background:white;
-padding:35px;
-border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.25);
-animation:cardPop .6s ease;
-}
-
-
-/* BOOKING SUMMARY */
-
-.summary-card{
-background:white;
-padding:30px;
-border-radius:16px;
-box-shadow:0 15px 40px rgba(0,0,0,0.25);
-animation:cardPop .8s ease;
-}
-
 
 /* PAYMENT OPTIONS */
-
-.payment-option{
-border:2px solid #e5e7eb;
-padding:15px;
-border-radius:10px;
-margin-bottom:15px;
-cursor:pointer;
-font-weight:500;
-transition:.3s;
+.payment-method-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
-.payment-option:hover{
-transform:scale(1.03);
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-.payment-option.active{
-border-color:#22c55e;
-background:#ecfdf5;
-}
-
-
-/* PAY BUTTON */
-
-.pay-btn{
-background:linear-gradient(135deg,#22c55e,#16a34a);
-color:white;
-border:none;
-padding:12px;
-border-radius:30px;
-font-weight:600;
-font-size:16px;
-transition:.3s;
-width:100%;
-}
-
-.pay-btn:hover{
-transform:scale(1.05);
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
-
-
-/* SUMMARY TEXT */
-
-.total{
-color:#16a34a;
-font-weight:700;
-}
-
-.secure{
-color:#16a34a;
-font-weight:500;
-}
-
-
-/* ANIMATIONS */
-
-@keyframes fadePage{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
-}
-
-@keyframes cardPop{
-from{
-transform:scale(.8);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
-
-
-
-
-
-
-/* UPI QR BOX */
-.upi-box {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-}
-
-/* QR IMAGE */
-.qr-img {
-  width: 180px;
-  height: 180px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-/* PAYMENT OPTION */
 .payment-option {
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border: 2px solid rgba(255,255,255,0.1);
+  padding: 18px;
+  border-radius: 12px;
   cursor: pointer;
-  background: rgba(255,255,255,0.1);
-  transition: 0.3s;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5f5;
+  background: rgba(255,255,255,0.05);
 }
 
 .payment-option:hover {
-  background: rgba(255,255,255,0.2);
+  border-color: #facc15;
+  background: rgba(250,204,21,0.1);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(250,204,21,0.2);
 }
 
 .payment-option.active {
-  border: 2px solid #4ade80;
+  border-color: #facc15;
+  background: rgba(250,204,21,0.15);
+  color: #facc15;
+  box-shadow: 0 8px 20px rgba(250,204,21,0.3);
 }
 
-/* BUTTON */
+.payment-option span:first-child {
+  font-size: 1.5rem;
+}
+
+/* FORM SECTIONS */
+.payment-form-section {
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 20px;
+  animation: fadeIn 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.payment-form-section h5 {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* CARD FORM */
+.card-form-group {
+  margin-bottom: 20px;
+}
+
+.card-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5f5;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.card-form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+.card-form-group input:focus {
+  outline: none;
+  border-color: #facc15;
+  box-shadow: 0 0 0 4px rgba(250,204,21,0.1);
+  background: rgba(250,204,21,0.05);
+  color: white;
+}
+
+.card-form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-error {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* UPI SECTION */
+.upi-section {
+  text-align: center;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+}
+
+.qr-code-container {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.qr-code-container img {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.upi-message {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-top: 15px;
+}
+
+.upi-apps {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.upi-app-badge {
+  background: #667eea;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* NET BANKING */
+.bank-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.bank-option {
+  padding: 15px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.05);
+  text-align: center;
+  font-weight: 600;
+  color: #cbd5f5;
+}
+
+.bank-option:hover {
+  border-color: #facc15;
+  background: rgba(250,204,21,0.1);
+}
+
+.bank-option.selected {
+  border-color: #facc15;
+  background: rgba(250,204,21,0.15);
+  color: #facc15;
+}
+
+/* WALLETS */
+.wallet-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+@media (max-width: 640px) {
+  .wallet-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wallet-btn {
+  padding: 15px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  font-weight: 600;
+  color: #cbd5f5;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.wallet-btn:hover {
+  border-color: #facc15;
+  background: rgba(250,204,21,0.1);
+  transform: translateY(-2px);
+  color: #facc15;
+}
+
+/* PAYMENT BUTTON */
 .pay-btn {
   width: 100%;
-  padding: 12px;
+  padding: 16px;
+  background: linear-gradient(45deg, #facc15, #f97316);
+  color: #0f172a;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(45deg, #16a34a, #22c55e);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  box-shadow: 0 10px 25px rgba(250,204,21,0.3);
+}
+
+.pay-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(250,204,21,0.4);
+}
+
+.pay-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.pay-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.pay-btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============================================
+   SUMMARY CARD (RIGHT SIDEBAR)
+   ============================================ */
+
+.summary-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: cardSlideInRight 0.7s ease;
+  height: fit-content;
+  position: sticky;
+  top: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 1024px) {
+  .summary-card {
+    position: relative;
+    top: 0;
+  }
+}
+
+.summary-card h4 {
+  font-size: 1.4rem;
   color: white;
+  margin-bottom: 25px;
+  font-weight: 700;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item-label {
+  font-weight: 500;
+}
+
+.summary-item-value {
+  color: #facc15;
+  font-weight: 600;
+}
+
+.summary-subtotal {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin: 15px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: #cbd5f5;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+  background: linear-gradient(45deg, #facc15, #f97316);
+  border-radius: 12px;
+  color: #0f172a;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.security-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(34,197,94,0.1);
+  border-radius: 10px;
+  color: #22c55e;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(34,197,94,0.2);
+}
+
+.security-info svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cardSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -2,50 +2,39 @@ import db from "../database/connection.js";
 
 export const createBooking = (req, res) => {
 
-  const { name, email, phone, checkIn, checkOut, room, price } = req.body;
+  const { roomId, name, email, guests, checkIn, checkOut } = req.body;
+  const user_id = req.user?.id || null;
 
-  const user_id = req.user.id;
+  if (!roomId || !checkIn || !checkOut || !name || !email) {
+    return res.status(400).json({ message: "Missing booking details: roomId, name, email, checkIn, checkOut required" });
+  }
 
   const start = new Date(checkIn);
   const end = new Date(checkOut);
 
-  const nights = Math.ceil(
-    (end - start) / (1000 * 60 * 60 * 24)
-  );
-
-  const total = nights * price;
+  if (isNaN(start) || isNaN(end) || end <= start) {
+    return res.status(400).json({ message: "Invalid booking dates" });
+  }
 
   const sql = `
     INSERT INTO bookings
-    (user_id, name, email, phone, room_type, price, check_in, check_out, nights, total, status)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')
+    (user_id, room_id, name, email, guests, check_in, check_out, status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 'Pending')
   `;
 
   db.query(
     sql,
-    [
-      user_id,
-      name,
-      email,
-      phone,
-      room,
-      price,
-      checkIn,
-      checkOut,
-      nights,
-      total
-    ],
+    [user_id, roomId, name, email, guests || 1, checkIn, checkOut],
     (err, result) => {
 
       if (err) {
-        console.log(err);
-        return res.status(500).json({ message: "Booking failed" });
+        console.log("Booking DB Error:", err);
+        return res.status(500).json({ message: "Booking failed: " + err.message });
       }
 
       res.json({
         message: "Booking created successfully",
-        nights,
-        total
+        bookingId: result.insertId
       });
 
     }

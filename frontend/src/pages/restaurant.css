@@ -36,11 +36,35 @@
 }
 
 /* SEARCH */
-.restaurant-page .search-box {
+.restaurant-page .search-filter-container {
   margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.restaurant-page .search-box {
   padding: 12px 25px;
   border-radius: 25px;
   border: none;
+  flex: 1;
+  max-width: 300px;
+}
+
+.restaurant-page .food-category {
+  margin-bottom: 8px;
+}
+
+.restaurant-page .food-description {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.restaurant-page .rating-text {
+  font-size: 0.8rem;
+  color: #facc15;
+  margin-left: 5px;
 }
 
 /* CARD */

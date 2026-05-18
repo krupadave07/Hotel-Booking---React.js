@@ -101,6 +101,29 @@
   font-weight: 600;
 }
 
+.room-details {
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.room-details i {
+  margin-right: 4px;
+  color: #facc15;
+}
+
+.room-amenities {
+  margin-bottom: 10px;
+}
+
+.room-amenities .badge {
+  font-size: 0.75rem;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: rgba(250, 204, 21, 0.2);
+  color: #facc15;
+  border: 1px solid #facc15;
+}
+
 /* STARS */
 .stars {
   color: gold;
@@ -130,3 +153,150 @@
   margin-top: 40px;
   background: rgba(0,0,0,0.6);
 }
+
+
+
+
+
+
+
+/* CARD */
+.room-card {
+  background: #1e293b;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.room-card button {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(45deg,#6366f1,#8b5cf6);
+  color: white;
+}
+
+/* MODAL BACKGROUND */
+.booking-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* MODAL BOX */
+.modal-box {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 380px;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
+  animation: popup 0.4s ease;
+}
+
+/* TITLE */
+.modal-box h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #facc15;
+}
+
+/* INPUTS */
+.modal-box input {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: #1e293b;
+  color: white;
+
+  outline: none;
+}
+
+/* INPUT FOCUS */
+.modal-box input:focus {
+  border: 1px solid #6366f1;
+  box-shadow: 0 0 10px rgba(99,102,241,0.5);
+}
+
+/* LABEL */
+.modal-box label {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* BUTTONS */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+/* CONFIRM BUTTON */
+.modal-actions button:first-child {
+  background: linear-gradient(45deg,#22c55e,#16a34a);
+  color: white;
+}
+
+/* CANCEL BUTTON */
+.modal-actions button:last-child {
+  background: #ef4444;
+  color: white;
+}
+
+/* HOVER */
+.modal-actions button:hover {
+  transform: scale(1.05);
+}
+
+/* ANIMATION */
+@keyframes popup {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+

@@ -4,10 +4,13 @@ const instance = axios.create({
   baseURL: "http://localhost:5000/api",
 });
 
-// Attach admin token to every request
+// Attach token to every request (both user and admin)
 instance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("adminToken");
+    // Check for user token first, then admin token
+    const userToken = localStorage.getItem("token");
+    const adminToken = localStorage.getItem("adminToken");
+    const token = userToken || adminToken;
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

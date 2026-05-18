@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./AdminLogin.css";
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -86,206 +87,94 @@ function AdminLogin() {
   };
 
   return (
-    <div className="login-page">
-      <div className="particles"></div>
+    <div className="admin-login-page">
+      <div className="admin-login-particles" />
 
-      <div className={`login-card ${shake ? "shake" : ""}`}>
-        <div className="logo">🏨</div>
-
-        <h2 className="mb-2">Hotel Admin</h2>
-        <p className="text-light mb-4">Login to manage your hotel</p>
+      <div className={`admin-login-card ${shake ? "shake" : ""}`}>
+        <div className="admin-login-brand">
+          <div className="admin-logo">🏨</div>
+          <div className="admin-brand-copy">
+            <span className="admin-subtitle">Hotel Admin Portal</span>
+            <h2>Welcome back</h2>
+            <p>Securely sign in to access bookings, operations and guest services.</p>
+          </div>
+        </div>
 
         {serverError && (
-          <div className="alert alert-danger py-2">
+          <div className="admin-error-alert">
             {serverError}
           </div>
         )}
 
         <form onSubmit={handleSubmit} noValidate>
-
-          {/* USERNAME */}
-          <input
-            type="text"
-            name="username"
-            className={`form-control mb-1 ${
-              errors.username ? "border-danger" : ""
-            }`}
-            placeholder="Username"
-            value={form.username}
-            onChange={handleChange}
-          />
-          {errors.username && (
-            <small className="text-danger">{errors.username}</small>
-          )}
-
-          {/* PASSWORD */}
-          <div className="position-relative mt-3 mb-1">
+          <div className="input-group">
+            <label htmlFor="username">Username</label>
             <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              className={`form-control ${
-                errors.password ? "border-danger" : ""
-              }`}
-              placeholder="Password"
-              value={form.password}
+              id="username"
+              type="text"
+              name="username"
+              className={errors.username ? "form-control has-error" : "form-control"}
+              placeholder="Enter your admin username"
+              value={form.username}
               onChange={handleChange}
             />
-            <span
-              className="eye-icon"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? "🙈" : "👁"}
-            </span>
+            {errors.username && (
+              <span className="field-error">{errors.username}</span>
+            )}
           </div>
-          {errors.password && (
-            <small className="text-danger">{errors.password}</small>
-          )}
 
-          {/* REMEMBER */}
-          <div className="form-check text-start mt-3 mb-3">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              checked={remember}
-              onChange={() => setRemember(!remember)}
-              id="remember"
-            />
-            <label className="form-check-label text-light">
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <div className="password-input-wrapper">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className={errors.password ? "form-control has-error" : "form-control"}
+                placeholder="Enter your password"
+                value={form.password}
+                onChange={handleChange}
+              />
+              <button
+                type="button"
+                className="eye-icon"
+                aria-label="Toggle password visibility"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "🙈" : "👁"}
+              </button>
+            </div>
+            {errors.password && (
+              <span className="field-error">{errors.password}</span>
+            )}
+          </div>
+
+          <div className="form-bottom-row">
+            <label className="remember-row">
+              <input
+                type="checkbox"
+                checked={remember}
+                onChange={() => setRemember(!remember)}
+              />
               Remember me
             </label>
+            <span className="forgot-text">Need help? Contact support</span>
           </div>
 
           <button
-            className="btn login-btn w-100"
+            className="login-btn"
             type="submit"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Signing in..." : "Sign in"}
           </button>
+
+          <div className="admin-login-footer">
+            Secure access for hotel administrators and property managers.
+          </div>
         </form>
       </div>
 
-      {/* CSS */}
-      <style>{`
-.login-page {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Light gradient background */
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5f5);
-
-  overflow: hidden;
-  position: relative;
-}
-
-/* subtle pattern */
-.particles::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background-image:
-    radial-gradient(circle, rgba(0,0,0,0.05) 2px, transparent 2px);
-  background-size: 60px 60px;
-  animation: moveParticles 30s linear infinite;
-}
-
-@keyframes moveParticles {
-  from { transform: translate(0,0); }
-  to { transform: translate(-200px,-200px); }
-}
-
-/* CARD */
-.login-card {
-  width: 420px;
-  padding: 35px;
-  border-radius: 18px;
-
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-
-  text-align: center;
-  color: #1e293b;
-  z-index: 2;
-}
-
-/* LOGO */
-.logo {
-  font-size: 50px;
-  animation: float 3s ease-in-out infinite;
-}
-
-/* FLOAT ANIMATION */
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* BUTTON */
-.login-btn {
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
-  color: #fff;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 10px;
-  border: none;
-  transition: 0.3s;
-}
-
-.login-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-}
-
-/* INPUT */
-.form-control {
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  padding: 10px;
-  transition: 0.2s;
-}
-
-.form-control:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
-}
-
-/* ERROR BORDER */
-.border-danger {
-  border: 1px solid #ef4444 !important;
-}
-
-/* ERROR TEXT */
-.text-danger {
-  font-size: 13px;
-}
-
-/* EYE ICON */
-.eye-icon {
-  position: absolute;
-  right: 12px;
-  top: 8px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-/* SHAKE */
-.shake {
-  animation: shake 0.4s;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  50% { transform: translateX(6px); }
-  75% { transform: translateX(-6px); }
-  100% { transform: translateX(0); }
-}
-      `}</style>
     </div>
   );
 }

@@ -1,0 +1,153 @@
+/* BASE */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* DARK THEME */
+.admin-container.dark {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+  width: 260px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+}
+
+/* LOGO */
+.logo-box h2 {
+  background: linear-gradient(45deg,#facc15,#f97316);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.logo-box p {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* NAV */
+.admin-nav {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* NAV LINK */
+.admin-nav-link {
+  padding: 12px;
+  border-radius: 10px;
+  color: #cbd5f5;
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.admin-nav-link:hover {
+  background: linear-gradient(45deg,#6366f1,#8b5cf6);
+  color: white;
+  transform: translateX(6px);
+}
+
+/* ACTIVE LINK */
+.active-link {
+  background: linear-gradient(45deg,#facc15,#f97316);
+  color: black !important;
+  font-weight: bold;
+}
+
+/* THEME BUTTON */
+.theme-toggle {
+  margin: 15px 0;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(45deg,#6366f1,#8b5cf6);
+  color: white;
+}
+
+/* USER */
+.admin-user {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.avatar {
+  font-size: 24px;
+}
+
+/* LOGOUT */
+.logout-btn {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #ef4444;
+  border: none;
+  color: white;
+}
+
+/* MAIN */
+.admin-main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* TOPBAR */
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-small {
+  background: linear-gradient(45deg,#6366f1,#8b5cf6);
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* CONTENT */
+.admin-content {
+  margin-top: 20px;
+}
+
+/* ANIMATION */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

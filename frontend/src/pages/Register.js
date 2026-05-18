@@ -35,14 +35,53 @@ function Register() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!validate()) return;
+
+  //   Swal.fire("Success 🎉", "Account Created", "success");
+
+  //   setTimeout(() => navigate("/login"), 1000);
+  // };
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  e.preventDefault();
 
-    Swal.fire("Success 🎉", "Account Created", "success");
+  if (!validate()) return;
 
-    setTimeout(() => navigate("/login"), 1000);
-  };
+  setLoading(true);
+  setServerMsg("");
+
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/auth/register",
+      form
+    );
+
+    Swal.fire({
+      title: "Success 🎉",
+      text: res.data.message || "Account Created Successfully",
+      icon: "success",
+      confirmButtonColor: "#16a34a"
+    });
+
+    // redirect after success
+    setTimeout(() => {
+      navigate("/login");
+    }, 1200);
+
+  } catch (err) {
+    console.error(err);
+
+    const msg =
+      err.response?.data?.message || "Registration failed";
+
+    setServerMsg(msg);
+
+    Swal.fire("Error ❌", msg, "error");
+  }
+
+  setLoading(false);
+};
 
   return (
     <div className="register-page">

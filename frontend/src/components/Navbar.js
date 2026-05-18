@@ -56,9 +56,14 @@ function Navbar() {
         {/* RIGHT SIDE */}
         <div className="d-flex align-items-center gap-3">
           {user && (
-            <span className="text-light fw-semibold">
-              Hello, {user.name || "User"} 👋
-            </span>
+            <>
+              <NavLink to="/profile" className="btn btn-sm btn-outline-warning">
+                Profile
+              </NavLink>
+              <span className="text-light fw-semibold">
+                Hello, {user.name || "User"} 👋
+              </span>
+            </>
           )}
 
           {user ? (

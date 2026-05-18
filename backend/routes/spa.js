@@ -3,6 +3,25 @@ import db from "../database/connection.js";
 
 const router = express.Router();
 
+/* ================= GET SPA SERVICES ================= */
+router.get("/services", async (req, res) => {
+  try {
+    const [rows] = await db.execute(`
+      SELECT ss.*, 
+             IFNULL(AVG(sr.rating), 0) as average_rating, 
+             COUNT(sr.id) as review_count
+      FROM spa_services ss
+      LEFT JOIN spa_reviews sr ON ss.id = sr.service_id
+      GROUP BY ss.id
+      ORDER BY ss.id
+    `);
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 /* ================= USER SPA BOOKING ================= */
 
 router.post("/book", async (req, res) => {

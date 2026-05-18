@@ -52,8 +52,20 @@
   transition: 0.3s;
 }
 
-.spa-page .spa-card:hover {
-  transform: translateY(-10px);
+.spa-page .spa-category {
+  margin-bottom: 8px;
+}
+
+.spa-page .spa-description {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.spa-page .rating-text {
+  font-size: 0.8rem;
+  color: #facc15;
+  margin-left: 5px;
 }
 
 /* BUTTON */

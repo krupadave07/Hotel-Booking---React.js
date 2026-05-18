@@ -8,9 +8,9 @@ import Spa from "./pages/Spa";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Profile from "./pages/Profile";
 
-import Wishlist from "./pages/Wishlist";
-import Reviews from "./pages/Reviews";
+//import Reviews from "./pages/Reviews";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
@@ -24,6 +24,7 @@ import AdminSpa from "./pages/AdminSpa";
 import AdminLogin from "./pages/AdminLogin";
 
 import AdminUsers from "./pages/AdminUsers";
+import AdminSettings from "./pages/AdminSettings";
 
 import Payment from "./pages/Payment";
 
@@ -52,10 +53,18 @@ function App() {
 
         <Route path="/my-bookings" element={<MyBookings />} />
 
-<Route path="/wishlist" element={<Wishlist />} />
-<Route path="/reviews" element={<Reviews />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
 
-<Route path="/forgot-password" element={<ForgotPassword />} />
+        {/*Route path="/reviews" element={<Reviews />} */}
+
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route path="/food-payment" element={<FoodPayment />} />
 
@@ -147,15 +156,15 @@ function App() {
         />
 
         <Route
-  path="/admin/users"
-  element={
-    <AdminProtectedRoute>
-      <AdminLayout>
-        <AdminUsers />
-      </AdminLayout>
-    </AdminProtectedRoute>
-  }
-/>
+          path="/admin/users"
+          element={
+            <AdminProtectedRoute>
+              <AdminLayout>
+                <AdminUsers />
+              </AdminLayout>
+            </AdminProtectedRoute>
+          }
+        />
 
         <Route
           path="/admin/restaurant"
@@ -163,6 +172,17 @@ function App() {
             <AdminProtectedRoute>
               <AdminLayout>
                 <AdminRestaurant />
+              </AdminLayout>
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/settings"
+          element={
+            <AdminProtectedRoute>
+              <AdminLayout>
+                <AdminSettings />
               </AdminLayout>
             </AdminProtectedRoute>
           }

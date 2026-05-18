@@ -6,7 +6,7 @@ import { verifyUser } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", verifyUser, createBooking);
+router.post("/", createBooking);
 
 
 router.get("/my-bookings", verifyUser, async (req, res) => {
@@ -20,61 +20,6 @@ router.get("/my-bookings", verifyUser, async (req, res) => {
 
   res.json(rows);
 
-});
-/* ================= AUTH ================= */
-
-const auth = (req, res, next) => {
-  const header = req.headers.authorization;
-
-  if (!header) return res.status(401).json({ message: "No token" });
-
-  const token = header.split(" ")[1];
-
-  try {
-    const decoded = jwt.verify(token, "secret123");
-    req.userId = decoded.id;
-    next();
-  } catch {
-    return res.status(401).json({ message: "Invalid token" });
-  }
-};
-
-/* ================= CREATE BOOKING ================= */
-
-
-router.post("/", async (req, res) => {
-
-  const { name, email, phone, checkIn, checkOut, room } = req.body;
-
-  try {
-
-    await db.execute(
-      "INSERT INTO bookings (name,email,phone,check_in,check_out,room_type) VALUES (?,?,?,?,?,?)",
-      [name, email, phone, checkIn, checkOut, room]
-    );
-
-    res.json({ message: "Booking successful" });
-
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-
-});
-
-
-/* ================= USER BOOKINGS ================= */
-
-router.get("/", auth, async (req, res) => {
-  try {
-    const [rows] = await db.execute(
-      "SELECT * FROM bookings WHERE user_id=? ORDER BY id DESC",
-      [req.userId]
-    );
-
-    res.json(rows);
-  } catch {
-    res.status(500).json({ message: "Server error" });
-  }
 });
 
 /* ================= ADMIN ALL BOOKINGS ================= */
